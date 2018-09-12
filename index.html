@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SkateMap</title>
+    <style>
+        #map {
+            height: 430px;
+            width: 100%;
+        }
+
+        #skateMapTekst {
+            text-align: center;
+        }
+
+        .iconExplenation {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            margin-top:10px;
+
+        }
+
+        .iconText {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            margin-left: 20px;
+            margin: top: 0;
+        }
+
+        .wrapper{
+            border:solid;
+            height: 100%;
+            margin-top:1%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="skateMapTekst">SkateMap</h1>
+    <div id="map"></div>
+    <div class="wrapper">
+    <div class="iconExplenation">
+        <img src="icons/street.png">
+        <img src="icons/shop.png">
+        <img src="icons/skate-park.png">
+    </div>
+    <div class="iconText">
+        <h3> Street Spot </h3>
+        <h3> Skatebutikk </h3>
+        <h3> Skatepark/Hall </h3>
+    </div>
+    </div>
+    <script>
+        function initMap() {
+            // Instillinger for kartet.
+            var options = {
+                zoom: 14,
+                center: {
+                    lat: 60.3913,
+                    lng: 5.3221
+                }
+            }
+
+            // Nytt kart
+            var map = new google.maps.Map(document.getElementById('map'), options);
+
+            // Legger til ny marker når man klikker på 
+            google.maps.event.addListener(map, 'click', function(event) {
+                // Add marker
+                addMarker({
+                    coords: event.latLng
+                });
+                //Skriver til konsole verdi for Longitude and Lattitude
+                console.log("Lattitude: " + event.latLng.lat());
+                console.log("Longitude: " + event.latLng.lng());
+
+            });
+
+
+
+            // Array av lokasjonene
+            var locations = [{
+                    coords: {
+                        lat: 60.388897,
+                        lng: 5.328529
+                    },
+                    iconImage: 'icons/street.png',
+                    content: '<h1>Grieghallen</h1> <img src="lokasjoner/grieghallen.jpg" height="200" width="250"</img> <h4>Beskrivelse av spot: </h4>'
+                },
+                {
+                    coords: {
+                        lat: 60.392228,
+                        lng: 5.328045
+                    },
+                    iconImage: 'icons/street.png',
+                    content: '<h1>Rådhuset</h1> <img src="lokasjoner/raadhuset.jpg" height="200" width="250"</img> <h4>Beskrivelse av spot: </h4>'
+                },
+                {
+                    coords: {
+                        lat: 60.394383,
+                        lng: 5.321904
+                    },
+                    iconImage: 'icons/shop.png',
+                    content: '<h1> Session Strandgaten </h1> <img src="lokasjoner/session.jpg" height="200" width="250" </img> <h4>Beskrivelse av butikk </h4>'
+                },
+                {
+                    coords: {
+                        lat: 60.382872,
+                        lng: 5.326977
+                    },
+                    iconImage: 'icons/skate-park.png',
+                    content: '<h1> Nygårdsparken Skatepark </h1> <img src="lokasjoner/nygaard.jpg" height="200" width="250" </img> <h4>Beskrivelse av spot: </h4>'
+                },
+                {
+                    coords: {
+                        lat: 60.384818,
+                        lng: 5.318702
+                    },
+                    iconImage: 'icons/skate-park.png',
+                    content: '<h1> Puddefjord Skatepark </h1> <img src="lokasjoner/puddefjord.jpg" height="200" width="250" </img> <h4>Beskrivelse av spot: </h4>'
+                }
+            ];
+
+            // Loop through markers
+            for (var i = 0; i < locations.length; i++) {
+                // Add marker
+                addMarker(locations[i]);
+            }
+
+            // Funksjonen som legger til en marker på kartet
+            function addMarker(props) {
+                var marker = new google.maps.Marker({
+                    position: props.coords,
+                    map: map,
+                    icon: props.iconImage
+                });
+
+                // Sjekker innhold i infovindu
+                if (props.content) {
+                    var infoWindow = new google.maps.InfoWindow({
+                        content: props.content
+                    });
+
+                    marker.addListener('click', function() {
+                        infoWindow.open(map, marker);
+                    });
+                }
+            }
+        }
+    </script>
+
+    <!-- Google API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIOOq7cNO2W4bk8LX-2VS7biRRhRDun1I&callback=initMap">
+    </script>
+</body>
+
+</html>
