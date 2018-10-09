@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Sample FirebaseUI App</title>
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+	<script>
+  // Initialize Firebase
+ 	 var config = {
+    	apiKey: "AIzaSyCZvV90dagGkxsJmi6cm-zcxlIMre4ZUE8",
+    	authDomain: "skatemap-1536768418811.firebaseapp.com",
+    	databaseURL: "https://skatemap-1536768418811.firebaseio.com",
+    	projectId: "skatemap-1536768418811",
+    	storageBucket: "skatemap-1536768418811.appspot.com",
+    	messagingSenderId: "256613316059"
+  		};
+  		firebase.initializeApp(config);
+	</script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.css" />
+    <script type="text/javascript">
+      // FirebaseUI config.
+      var uiConfig = {
+        signInSuccessUrl: '<url-to-redirect-to-on-success>',
+        signInOptions: [
+          // Leave the lines as is for the providers you want to offer your users.
+
+          firebase.auth.EmailAuthProvider.PROVIDER_ID
+        ],
+        // tosUrl and privacyPolicyUrl accept either url string or a callback
+        // function.
+        // Terms of service url/callback.
+        tosUrl: '<your-tos-url>',
+        // Privacy policy url/callback.
+        privacyPolicyUrl: function() {
+          window.location.assign('<your-privacy-policy-url>');
+        }
+      };
+
+      // Initialize the FirebaseUI Widget using Firebase.
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      // The start method will wait until the DOM is loaded.
+      ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
+  </head>
+  <body>
+    <!-- The surrounding HTML is left untouched by FirebaseUI.
+         Your app may use that space for branding, controls and other customizations.-->
+    <h1>skateMap</h1>
+    <div id="firebaseui-auth-container"></div>
+  </body>
+</html>
+
