@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SkateMap</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="brand"><span>Skate</span>Map</h1>
+      <div class="wrapper">
+        <div class="company-info">
+          <h3>SkateMapAppFap</h3>
+          <ul>
+            <li><i class="fa fa-road"></i> Legg til nye lokasjoner!</li>
+            <li><i class="fa fa-envelope"></i> skateMap@skatemap.no</li>
+          </ul>
+        </div>
+        <div class="contact">
+          <h3>Fyll ut boksene under for å legge til en ny lokasjon i kartet!</h3>
+          <!--<div class="alert">Din lokasjon har blitt sendt inn!</div>-->
+          <form id="locationform">
+            <p>
+              <label>Navn</label>
+              <input type="text" name="navn" id="navn" required>
+            </p>
+            <!-- <p>
+              <label>Gateadresse</label>
+              <input type="text" name="gateadresse" id="gateadresse">
+            </p>
+            <p>
+              <label>Post nummer</label>
+              <input type="text" name="postnr" id="postnr" required>
+            </p>
+            <p>
+              <label>Post sted</label>
+              <input type="text" name="poststed" id="poststed">
+            </p>
+            <p>
+              <label>Lengdegrad</label>
+              <input type="text" name="lng" id="lng" required>
+            </p>
+            <p>
+              <label>Breddegrad</label>
+              <input type="text" name="breddegrad" id="lat">
+            </p>
+            <p> -->
+              <label>Type</label>
+              <input type="text" name="type" id="type" required>
+            </p>
+            <p>
+              <label>Belysning</label>
+              <input type="text" name="belysning" id="belysning">
+            </p>
+            <p class="full">
+              <label> Kort beskrivelse av lokasjonen</label>
+              <textarea name="beskrivelse" rows="5" id="beskrivelse"></textarea>
+            </p>
+            
+            <p class="full">
+              <button type="submit">Submit</button>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
